@@ -1,0 +1,30 @@
+G17                          ;set as XY plane
+G90                          ;absolute distance mode for XYZ
+G91.1                        ;incremental distance mode for IJK
+G0 X300 Y0 Z200              ;rapid linear move to [300,0,200]
+G2 X300 Y200 Z200 I100 J100  ;clockwise arc, end position is [300,200,200], arc center(incremental distance mode):[100,100,0]
+G3 X300 Y0 Z200 I100 J-100   ;counterclockwise arc, end position is [300,0,200], arc center(incremental distance mode):[100,-100,0]
+
+
+;G18 example
+G0 X300 Y0 Z200               ;rapid linear move to [300,0,200]
+G18                           ;set as XZ plane
+G2 X300 Y0 Z250 I25 K25 P4    ;clockwise arc in XZ plane, 4 turns
+G3 X300 Y0 Z200 I25 K-25 P2   ;counterclockwise arc in XZ plane, 2 turns
+
+
+;G19 example
+G90                           ;absolute distance mode for XYZ
+G19                           ;set as YZ plane
+G0 X300 Y10 Z200              ;rapid linear move to [300,10,200]
+G2 X300 Y10 Z250 J25 K25      ;clockwise arc, arc center(incremental distance mode):[0,25,25]
+G3 X300 Y10 Z200 J25 K-25 P5  ;counterclockwise arc, arc center(incremental distance mode):[0,25,-25], 5 turns
+
+
+;G90.1 G91.1 example
+G0 X300 Y10 Z200            ;rapid linear move to [300,10,200]
+G17                         ;set as XY plane
+G90.1                       ;absolute distance mode for IJK
+G91                         ;incremental distance mode for XYZ
+G2 Y100 I350 J60            ;clockwise arc in XY plane, move to [300,110,200], arc center(absolute distance mode):[350,60,0]
+G91.1                       ;incremental distance mode for IJK
